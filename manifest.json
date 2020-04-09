@@ -1,0 +1,79 @@
+{
+  "name": "图片提取插件",
+  "version": "1.0",
+  "description": "Build an Extension!",
+  "permissions": [
+    "activeTab", 
+    "declarativeContent", 
+    "storage",
+    "contextMenus",
+    "tabs",
+    "contextMenus",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "omnibox": { "keyword" : "nt" },
+  "page_action": {
+    "default_title": "小夕图片提取插件",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "32": "images/icon32.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "web_accessible_resources": ["js/inject.js", "images/**"],
+  "icons": {
+    "16": "images/icon16.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "content_scripts": [{
+    "matches": [
+        "http://*/*",
+        "https://*/*"
+    ],
+    "js": [
+        "lib/jquery3.4.min.js",
+        "content_script.js"
+    ],
+    "css": ["base.css"]
+  }],
+  "commands": {
+    "flip-tabs-forward": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+M",
+        "mac": "Command+Shift+M"
+      },
+      "description": "Flip tabs forward"
+    },
+    "flip-tabs-backwards": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+N",
+        "mac": "Command+Shift+N"
+      },
+      "description": "Flip tabs backwards"
+    },
+    "toggle-tags": {
+      "suggested_key": {
+        "default": "Alt+S",
+        "mac": "MacCtrl+S"
+      },
+      "description": "Toggle Tags"
+    }
+  },
+  "chrome_url_overrides" : {
+    "newtab": "override_page.html"
+  },
+  "manifest_version": 2
+}
