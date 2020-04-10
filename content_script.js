@@ -70,9 +70,6 @@ $('.crawl-btn').click(function(){
   }
 }()
 
-
-
-
 // var imgURL = chrome.runtime.getURL("/images/icon48.png");
 // $('img')[0].src = imgURL;
 
@@ -95,3 +92,11 @@ chrome.runtime.onMessage.addListener(
 //   console.log(response, document.body);
 //   // document.body.style.backgroundColor="orange"
 // });
+
+// 在页面上插入代码
+// 在配置文件中需设置"persistent": true, 因为事件页面不支持webrequest
+console.log(11111, chrome.extension.getURL('ajax_interceptor.js'))
+const script = document.createElement('script');
+script.setAttribute('type', 'text/javascript');
+script.setAttribute('src', chrome.extension.getURL('ajax_interceptor.js'));
+$('body').append(script);

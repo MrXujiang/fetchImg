@@ -7,6 +7,8 @@
     "declarativeContent", 
     "storage",
     "contextMenus",
+    "webRequest", 
+    "webRequestBlocking",
     "tabs",
     "contextMenus",
     "http://*/*",
@@ -14,7 +16,7 @@
   ],
   "background": {
     "scripts": ["background.js"],
-    "persistent": false
+    "persistent": true
   },
   "omnibox": { "keyword" : "nt" },
   "page_action": {
@@ -27,7 +29,7 @@
       "128": "images/icon128.png"
     }
   },
-  "web_accessible_resources": ["js/inject.js", "images/**"],
+  "web_accessible_resources": ["js/inject.js", "images/**", "ajax_interceptor.js"],
   "icons": {
     "16": "images/icon16.png",
     "32": "images/icon32.png",
